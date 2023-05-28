@@ -1,13 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
-import { TodoTypicodeResponseData } from './response-in/todo-typicode.response';
+import { TodoTypicodeResponseData } from './api/todo-typicode.response';
+import { ApiService } from './api/api.service';
 
 @Controller()
 export class AppController {
-    constructor(private readonly appService: AppService) {}
+    constructor(private readonly apiService: ApiService) {}
 
     @Get()
     async getHello(): Promise<TodoTypicodeResponseData> {
-        return await this.appService.fetchData();
+        return await this.apiService.fetchData();
     }
 }
