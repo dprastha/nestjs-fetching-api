@@ -13,6 +13,7 @@ export class AppService {
     constructor(private readonly httpService: HttpService) {}
 
     async fetchData(): Promise<TodoTypicodeResponseData> {
+        //  Get TodoTypicodeResponse using axios
         const response = await lastValueFrom(
             this.httpService.get<AxiosResponse<TodoTypicodeResponse>>(
                 'https://jsonplaceholder.typicode.com/todos/1',
@@ -21,6 +22,7 @@ export class AppService {
             console.log(err);
         });
 
+        // Parse the response from axios response
         const parsedResponse = plainToInstance(TodoTypicodeResponse, response, {
             enableCircularCheck: true,
         });
